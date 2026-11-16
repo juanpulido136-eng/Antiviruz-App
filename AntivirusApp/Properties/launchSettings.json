@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Antivirus (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Antivirus (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

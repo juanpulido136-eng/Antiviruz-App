@@ -1,0 +1,225 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="AntivirusApp.Views.ScanPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:views="using:AntivirusApp.Views"
+    NavigationCacheMode="Required">
+
+    <Page.Resources>
+        <DataTemplate x:Key="ResultRow"                            >
+            <Grid x:ConnectionId='3' Padding="16,12" ColumnSpacing="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="36" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="90" />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+
+                <Border Width="32" Height="32" CornerRadius="8" Background="{StaticResource RaisedBrush}">
+                    <FontIcon x:ConnectionId='11'                            FontSize="14" Foreground="{StaticResource MutedBrush}" />
+                </Border>
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                    <TextBlock x:ConnectionId='9'                      FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                    <TextBlock x:ConnectionId='10'                        FontSize="12" Foreground="{StaticResource MutedBrush}" TextTrimming="CharacterEllipsis" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="7" VerticalAlignment="Center">
+                    <FontIcon x:ConnectionId='7'                               FontSize="13"                              />
+                    <TextBlock x:ConnectionId='8'                              FontSize="13" FontWeight="SemiBold"                              />
+                </StackPanel>
+
+                <TextBlock x:ConnectionId='4' Grid.Column="3"                          VerticalAlignment="Center" FontWeight="SemiBold"                              />
+                <TextBlock x:ConnectionId='5' Grid.Column="4"                          VerticalAlignment="Center" Foreground="{StaticResource MutedBrush}" />
+                <TextBlock x:ConnectionId='6' Grid.Column="5"                          VerticalAlignment="Center" Foreground="{StaticResource MutedBrush}" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid RowSpacing="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid ColumnSpacing="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:ConnectionId='31' x:Name="FileButton" Style="{StaticResource PrimaryButton}"                       >
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <FontIcon Glyph="&#xE8A5;" FontSize="13" />
+                    <TextBlock Text="Analizar archivo" />
+                </StackPanel>
+            </Button>
+            <Button x:ConnectionId='32' x:Name="FolderButton" Grid.Column="1" Style="{StaticResource GhostButton}"                         >
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <FontIcon Glyph="&#xE8B7;" FontSize="13" />
+                    <TextBlock Text="Analizar carpeta" />
+                </StackPanel>
+            </Button>
+            <Button x:ConnectionId='33' x:Name="ZipButton" Grid.Column="2" Style="{StaticResource GhostButton}"                      >
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <FontIcon Glyph="&#xE7B8;" FontSize="13" />
+                    <TextBlock Text="Analizar ZIP" />
+                </StackPanel>
+            </Button>
+            <Button x:ConnectionId='34' x:Name="CancelButton" Grid.Column="3" Style="{StaticResource DangerGhostButton}" IsEnabled="False"                     >
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <FontIcon Glyph="&#xE711;" FontSize="13" />
+                    <TextBlock Text="Cancelar" />
+                </StackPanel>
+            </Button>
+            <TextBox x:ConnectionId='35' x:Name="SearchBox" Grid.Column="5" PlaceholderText="Buscar por nombre, ubicación o veredicto"                                  />
+        </Grid>
+
+        <Border Grid.Row="1" Style="{StaticResource Card}">
+            <Grid ColumnSpacing="32">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Width="176" Height="176">
+
+                    <Ellipse x:ConnectionId='26' x:Name="RingSpin"
+                             Width="176" Height="176"
+                             StrokeThickness="2"
+                             Stroke="{StaticResource VioletBrush}"
+                             StrokeDashArray="1.5,7"
+                             StrokeDashCap="Round"
+                             Opacity="0.85"
+                             Visibility="Collapsed"
+                             RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform x:ConnectionId='30' x:Name="RingSpinTransform" Angle="0" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <Ellipse Width="150" Height="150" StrokeThickness="12" Stroke="{StaticResource RaisedBrush}" />
+                    <Ellipse x:ConnectionId='27' x:Name="RingFill" Width="150" Height="150" StrokeThickness="12" Stroke="{StaticResource AccentBrush}" RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform Angle="-90" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="2">
+                        <TextBlock x:ConnectionId='28' x:Name="RingPercent" Text="0%" FontSize="30" FontWeight="SemiBold" HorizontalAlignment="Center" />
+                        <TextBlock x:ConnectionId='29' x:Name="RingLabel" Text="listo" FontSize="12" Foreground="{StaticResource MutedBrush}" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Column="1" Spacing="14" VerticalAlignment="Center">
+                    <TextBlock x:ConnectionId='17' x:Name="HeadTitle" Text="Listo para analizar" FontSize="22" FontWeight="SemiBold" />
+                    <TextBlock x:ConnectionId='18' x:Name="HeadDetail" Text="Selecciona un archivo, una carpeta o un ZIP" FontSize="13" Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap" />
+
+                    <Border Height="6" CornerRadius="3" Background="{StaticResource RaisedBrush}">
+                        <Grid x:ConnectionId='25' x:Name="DistGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="0*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{StaticResource OkBrush}" CornerRadius="3" />
+                            <Border Grid.Column="1" Background="{StaticResource WarnBrush}" CornerRadius="3" />
+                            <Border Grid.Column="2" Background="{StaticResource DangerBrush}" CornerRadius="3" />
+                        </Grid>
+                    </Border>
+
+                    <Grid ColumnSpacing="24">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Spacing="4">
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon Glyph="&#xE8A5;" FontSize="12" Foreground="{StaticResource MutedBrush}" />
+                                <TextBlock Text="REVISADOS" FontSize="11" Foreground="{StaticResource MutedBrush}" />
+                            </StackPanel>
+                            <TextBlock x:ConnectionId='24' x:Name="KTotal" Text="0" FontSize="28" FontWeight="Light" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Spacing="4">
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon Glyph="&#xE73E;" FontSize="12" Foreground="{StaticResource OkBrush}" />
+                                <TextBlock Text="LIMPIOS" FontSize="11" Foreground="{StaticResource MutedBrush}" />
+                            </StackPanel>
+                            <TextBlock x:ConnectionId='23' x:Name="KClean" Text="0" FontSize="28" FontWeight="Light" Foreground="{StaticResource OkBrush}" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Spacing="4">
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon Glyph="&#xE7BA;" FontSize="12" Foreground="{StaticResource WarnBrush}" />
+                                <TextBlock Text="SOSPECHOSOS" FontSize="11" Foreground="{StaticResource MutedBrush}" />
+                            </StackPanel>
+                            <TextBlock x:ConnectionId='22' x:Name="KSus" Text="0" FontSize="28" FontWeight="Light" Foreground="{StaticResource WarnBrush}" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="3" Spacing="4">
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon Glyph="&#xE783;" FontSize="12" Foreground="{StaticResource DangerBrush}" />
+                                <TextBlock Text="MALICIOSOS" FontSize="11" Foreground="{StaticResource MutedBrush}" />
+                            </StackPanel>
+                            <TextBlock x:ConnectionId='21' x:Name="KMal" Text="0" FontSize="28" FontWeight="Light" Foreground="{StaticResource DangerBrush}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock x:ConnectionId='19' x:Name="SpeedText" FontSize="12" Foreground="{StaticResource MutedBrush}" />
+
+                    <Viewbox Height="44" Stretch="Fill" HorizontalAlignment="Stretch">
+                        <Canvas Width="600" Height="50">
+                            <Polyline x:ConnectionId='20' x:Name="Spark" Stroke="{StaticResource AccentBrush}" StrokeThickness="2" />
+                        </Canvas>
+                    </Viewbox>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8">
+            <Button x:ConnectionId='13' x:Name="ChipAll" Tag="all" Content="Todos" Style="{StaticResource ChipButton}"                      />
+            <Button x:ConnectionId='14' x:Name="ChipMal" Tag="M" Content="Maliciosos" Style="{StaticResource ChipButton}"                      />
+            <Button x:ConnectionId='15' x:Name="ChipSus" Tag="S" Content="Sospechosos" Style="{StaticResource ChipButton}"                      />
+            <TextBlock x:ConnectionId='16' x:Name="CountText" Margin="16,0,0,0" VerticalAlignment="Center" FontSize="12" Foreground="{StaticResource MutedBrush}" />
+        </StackPanel>
+
+        <Border Grid.Row="3" Style="{StaticResource Card}" Padding="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid Padding="16,10" ColumnSpacing="12" BorderBrush="{StaticResource LineBrush}" BorderThickness="0,0,0,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="36" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="90" />
+                        <ColumnDefinition Width="80" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" Text="ARCHIVO" FontSize="11" Foreground="{StaticResource MutedBrush}" />
+                    <TextBlock Grid.Column="2" Text="VEREDICTO" FontSize="11" Foreground="{StaticResource MutedBrush}" />
+                    <TextBlock Grid.Column="3" Text="RIESGO" FontSize="11" Foreground="{StaticResource MutedBrush}" />
+                    <TextBlock Grid.Column="4" Text="TAMAÑO" FontSize="11" Foreground="{StaticResource MutedBrush}" />
+                    <TextBlock Grid.Column="5" Text="HORA" FontSize="11" Foreground="{StaticResource MutedBrush}" />
+                </Grid>
+
+                <ListView x:ConnectionId='12' x:Name="ResultList" Grid.Row="1"                               
+                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+                          ItemTemplate="{StaticResource ResultRow}"
+                          ItemContainerStyle="{StaticResource PlainListItem}"
+                          SelectionMode="Single"                                            Padding="0" />
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
+

@@ -1,0 +1,233 @@
+<Page
+    x:Class="AntivirusApp.Views.HelpPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    NavigationCacheMode="Required">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollMode="Enabled"
+                  HorizontalScrollMode="Disabled">
+
+        <StackPanel x:Name="PageRoot" Spacing="12" Padding="0,0,10,0">
+
+            <Border x:Name="HeroCard"
+                    Style="{StaticResource Card}"
+                    Padding="22,18"
+                    Background="{StaticResource HeroGradient}">
+                <Grid ColumnSpacing="18">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Width="46" Height="46" CornerRadius="12" Background="{StaticResource BrandBrush}" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE897;" FontSize="20" Foreground="#FFFFFFFF" />
+                    </Border>
+
+                    <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                        <TextBlock Text="Ayuda y aviso de uso" FontSize="24" FontWeight="SemiBold" />
+                        <TextBlock Text="Guía de los módulos, alcance real del proyecto y condiciones de uso. Versión v22.0."
+                                   FontSize="13"
+                                   Foreground="{StaticResource MutedBrush}"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource Card}" Padding="22,18" Background="{StaticResource HeroGradientWarm}" BorderBrush="{StaticResource WarnBrush}" BorderThickness="2,1,1,1">
+                <StackPanel Spacing="10">
+                    <StackPanel Orientation="Horizontal" Spacing="9">
+                        <FontIcon Glyph="&#xE7BA;" FontSize="15" Foreground="{StaticResource WarnBrush}" VerticalAlignment="Center" />
+                        <TextBlock Text="AVISO IMPORTANTE · ENTORNO DE EXPERIMENTACIÓN · v22.0"
+                                   FontSize="11"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource WarnBrush}"
+                                   CharacterSpacing="40"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <TextBlock TextWrapping="Wrap" FontSize="13" LineHeight="21">
+                        Este programa es un proyecto de carácter <Run FontWeight="SemiBold">experimental, académico y de demostración</Run>.
+                        No es un antivirus comercial, no cuenta con certificación ni homologación de seguridad y
+                        <Run FontWeight="SemiBold">no sustituye a Windows Defender</Run> ni a ninguna otra solución de protección profesional.
+                    </TextBlock>
+
+                    <TextBlock TextWrapping="Wrap" FontSize="12.5" LineHeight="20" Foreground="{StaticResource MutedBrush}">
+                        El motor heurístico y los módulos de análisis (inspección de cabeceras PE, revisión de
+                        documentos OOXML y PDF, detección de archivos empaquetados, cálculo de entropía, búsqueda de
+                        patrones y comprobación de hashes) son implementaciones propias inspiradas en ideas, técnicas
+                        y herramientas de análisis publicadas en portales de código abierto como GitHub. Esos
+                        proyectos se toman únicamente como referencia conceptual: este programa no incorpora, enlaza
+                        ni redistribuye su código, sus firmas ni sus bases de datos.
+                    </TextBlock>
+
+                    <TextBlock TextWrapping="Wrap" FontSize="12.5" LineHeight="20" Foreground="{StaticResource MutedBrush}">
+                        Los veredictos que se muestran son <Run FontWeight="SemiBold">orientativos</Run> y pueden contener
+                        falsos positivos y falsos negativos. Ningún resultado debe usarse como única base para eliminar
+                        archivos, auditar un equipo, tomar decisiones de seguridad o intervenir sistemas en producción.
+                        Antes de eliminar cualquier elemento, compruebe su origen y mantenga copias de seguridad.
+                    </TextBlock>
+
+                    <TextBlock TextWrapping="Wrap" FontSize="12.5" LineHeight="20" Foreground="{StaticResource MutedBrush}">
+                        El uso del programa es responsabilidad exclusiva de quien lo ejecuta. No se ofrece garantía de
+                        ningún tipo ni se asume responsabilidad por pérdida de datos, daños directos o indirectos,
+                        interrupciones del servicio o cualquier otra consecuencia derivada de su uso. Se recomienda
+                        ejecutarlo en un equipo de pruebas o en una máquina virtual, nunca en sistemas críticos.
+                        Este aviso se aplica a todos los módulos: Análisis manual, Aegiss_Clenaer, Aegiss_TheClurer,
+                        Vigilancia en vivo y Cuenta.
+                    </TextBlock>
+
+                    <Border Background="{StaticResource AccentSoftBrush}" CornerRadius="6" Padding="12,10">
+                        <TextBlock FontSize="12" Foreground="{StaticResource TextBrush}" TextWrapping="Wrap" LineHeight="19">
+                            <Run FontWeight="SemiBold">Resumen:</Run> herramienta de estudio y práctica. Úsela para aprender
+                            cómo funcionan las técnicas de detección, no como protección real de un equipo.
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource Card}" Padding="20">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="QUÉ ES AEGIS" FontSize="10" Foreground="{StaticResource MutedBrush}" CharacterSpacing="70" />
+                    <TextBlock TextWrapping="Wrap" FontSize="13" LineHeight="20">
+                        Aegis es un panel de protección local para tu PC. Analiza archivos con un motor
+                        heurístico propio (sin firmas de virus), mide qué ocupa espacio en tu equipo y te
+                        deja comprimir carpetas. Todo se ejecuta en tu máquina: no envía nada a internet.
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource Card}" Padding="20">
+                <StackPanel Spacing="14">
+                    <TextBlock Text="CÓMO USAR CADA MÓDULO" FontSize="10" Foreground="{StaticResource MutedBrush}" CharacterSpacing="70" />
+
+                    <StackPanel Spacing="10">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="01" FontFamily="Consolas" FontSize="12" Foreground="{StaticResource AccentBrush}" VerticalAlignment="Top" Margin="0,2,0,0" />
+                            <StackPanel Spacing="2">
+                                <TextBlock Text="Análisis manual" FontWeight="SemiBold" FontSize="14" />
+                                <TextBlock TextWrapping="Wrap" FontSize="12.5" Foreground="{StaticResource MutedBrush}" LineHeight="19">
+                                    Analiza un archivo, una carpeta o el contenido de un ZIP con el motor
+                                    heurístico local. La lista muestra todos los elementos revisados (limpios
+                                    incluidos) con su veredicto y su puntuación de riesgo; el detalle de cada fila
+                                    explica los motivos encontrados. Al terminar se emite un único aviso con el
+                                    resumen del análisis, para no saturar la pantalla con ventanas.
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Border Height="1" Background="{StaticResource LineBrush}" />
+
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="02" FontFamily="Consolas" FontSize="12" Foreground="{StaticResource VioletBrush}" VerticalAlignment="Top" Margin="0,2,0,0" />
+                            <StackPanel Spacing="2">
+                                <TextBlock Text="Aegiss_Clenaer" FontWeight="SemiBold" FontSize="14" />
+                                <TextBlock TextWrapping="Wrap" FontSize="12.5" Foreground="{StaticResource MutedBrush}" LineHeight="19">
+                                    Recorre el equipo completo o una carpeta concreta y mide el peso real de cada
+                                    archivo y de cada carpeta. Los indicadores y el gráfico muestran lo que más ocupa;
+                                    las pestañas Archivos y Carpetas separan ambos resultados e indican el origen de
+                                    cada elemento. Cualquier eliminación exige una confirmación explícita y el elemento
+                                    se envía a la Papelera de reciclaje, de donde todavía puede recuperarse.
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Border Height="1" Background="{StaticResource LineBrush}" />
+
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="03" FontFamily="Consolas" FontSize="12" Foreground="{StaticResource OkBrush}" VerticalAlignment="Top" Margin="0,2,0,0" />
+                            <StackPanel Spacing="2">
+                                <TextBlock Text="Aegiss_TheClurer" FontWeight="SemiBold" FontSize="14" />
+                                <TextBlock TextWrapping="Wrap" FontSize="12.5" Foreground="{StaticResource MutedBrush}" LineHeight="19">
+                                    Medir aplicaciones dibuja el peso de cada programa en un mapa de cuadrados.
+                                    Analizar carpetas mide las carpetas de la ruta elegida y te deja comprimirlas:
+                                    Comprimir crea el ZIP, Comprimir y borrar además elimina el original. El ZIP
+                                    se verifica antes de borrar: si algo no cuadra, no se borra nada.
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Border Height="1" Background="{StaticResource LineBrush}" />
+
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="04" FontFamily="Consolas" FontSize="12" Foreground="{StaticResource WarnBrush}" VerticalAlignment="Top" Margin="0,2,0,0" />
+                            <StackPanel Spacing="2">
+                                <TextBlock Text="Vigilancia en vivo" FontWeight="SemiBold" FontSize="14" />
+                                <TextBlock TextWrapping="Wrap" FontSize="12.5" Foreground="{StaticResource MutedBrush}" LineHeight="19">
+                                    Activa el interruptor y quedará revisando la carpeta de Descargas. Cada archivo
+                                    nuevo se analiza solo y, si hay algo sospechoso, aparece el aviso flotante con
+                                    el detalle.
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Border Height="1" Background="{StaticResource LineBrush}" />
+
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="05" FontFamily="Consolas" FontSize="12" Foreground="{StaticResource DangerBrush}" VerticalAlignment="Top" Margin="0,2,0,0" />
+                            <StackPanel Spacing="2">
+                                <TextBlock Text="Cuenta" FontWeight="SemiBold" FontSize="14" />
+                                <TextBlock TextWrapping="Wrap" FontSize="12.5" Foreground="{StaticResource MutedBrush}" LineHeight="19">
+                                    Cambia tu foto, tu nombre visible y tu descripción. La foto se copia al perfil,
+                                    así que no se rompe si mueves el archivo original. Pulsa el avatar de arriba a la
+                                    derecha para entrar directo.
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Grid ColumnSpacing="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{StaticResource Card}" Padding="20">
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="DÓNDE QUEDA TODO" FontSize="10" Foreground="{StaticResource MutedBrush}" CharacterSpacing="70" />
+                        <TextBlock FontSize="12" TextWrapping="Wrap" LineHeight="22" IsTextSelectionEnabled="True">
+                            %LocalAppData%\Aegis\profile.json   nombre, descripción<LineBreak />
+                            %LocalAppData%\Aegis\avatar.png     foto de perfil<LineBreak />
+                            %LocalAppData%\Aegis\archives\      ZIP creados<LineBreak />
+                            %LocalAppData%\Aegis\app.log        registro de todo
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Style="{StaticResource Card}" Padding="20">
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="SEGURIDAD" FontSize="10" Foreground="{StaticResource MutedBrush}" CharacterSpacing="70" />
+                        <TextBlock FontSize="12.5" TextWrapping="Wrap" Foreground="{StaticResource MutedBrush}" LineHeight="20">
+                            · Clenaer nunca borra sin confirmación: pide marcar una casilla y manda a la Papelera.
+                            <LineBreak />
+                            · Nunca toca Windows, System32, WinSxS, Program Files ni el perfil completo.
+                            <LineBreak />
+                            · El ZIP se abre y se compara con el original antes de borrar la carpeta.
+                            <LineBreak />
+                            · Todo es local: no hay subida de archivos ni telemetría.
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Border Style="{StaticResource Card}" Padding="20">
+                <StackPanel Spacing="6">
+                    <TextBlock Text="ALCANCE DEL PROYECTO · V22.0" FontSize="10" Foreground="{StaticResource MutedBrush}" CharacterSpacing="70" />
+                    <TextBlock FontSize="12.5" TextWrapping="Wrap" Foreground="{StaticResource MutedBrush}" LineHeight="20">
+                        · El acceso al panel se valida con las credenciales definidas en el código; la interfaz no muestra credenciales.
+                        <LineBreak />
+                        · No hay telemetría, ni cuentas en la nube, ni envío de archivos a internet.
+                        <LineBreak />
+                        · El motor es heurístico y local: aprende de patrones, no de un catálogo de firmas.
+                        <LineBreak />
+                        · Los módulos de espacio y compresión son utilitarios de la misma demostración.
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

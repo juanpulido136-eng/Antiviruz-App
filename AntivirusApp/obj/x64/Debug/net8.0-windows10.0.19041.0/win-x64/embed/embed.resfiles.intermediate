@@ -1,0 +1,10 @@
+App.xbf
+MainWindow.xbf
+Views\AccountPage.xbf
+Views\CleanerPage.xbf
+Views\HelpPage.xbf
+Views\LivePage.xbf
+Views\LoginPage.xbf
+Views\ScanPage.xbf
+Views\ShellPage.xbf
+Views\SpacePage.xbf
